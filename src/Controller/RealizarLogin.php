@@ -46,6 +46,8 @@ class RealizarLogin extends ControllerComHtml implements InterfaceControladorReq
             require __DIR__ . '/../../view/alerta.php';
             return;
         }
+        session_start();
+        $_SESSION['logado'] = true;
 
         header('Location: /listar-cursos');
     }
