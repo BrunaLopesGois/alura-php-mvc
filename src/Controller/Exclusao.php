@@ -27,6 +27,6 @@ class Exclusao implements
             ->getReference(Curso::class, $idEntidade);
         $this->entityManager->remove($entidade);
         $this->entityManager->flush();
-        return new Response(302, ['Location' => '/novo-curso']);
+        return new Response(302, ['Location' => '/listar-cursos']);
     }
 }
