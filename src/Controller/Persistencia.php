@@ -20,6 +20,7 @@ class Persistencia implements
 
     public function __construct(EntityManagerInterface $entityManager)
     {
+        $this->entityManager = $entityManager;
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface
@@ -31,11 +32,6 @@ class Persistencia implements
 
         $curso = new Curso();
         $curso->setDescricao($request->getParsedBody()['descricao']);
-
-        $id = filter_var(
-            $request->getQueryParams()['id'],
-            FILTER_VALIDATE_INT
-        );
 
         if (!is_null($id) && $id !== false) {
             $curso->setId($id);
