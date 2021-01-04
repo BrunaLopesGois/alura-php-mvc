@@ -2,14 +2,15 @@
 
 namespace Alura\Cursos\Controller;
 
-use Alura\Cursos\Entity\Curso;
 use Doctrine\ORM\EntityManagerInterface;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use SimpleXMLElement;
+use Alura\Cursos\Entity\Curso;
 
-class CursosEmJson implements
+class CursosEmXml implements
     RequestHandlerInterface
 {
     private $repositorioDeCursos;
@@ -22,8 +23,16 @@ class CursosEmJson implements
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        /** @var Curso[] $cursos */
         $cursos = $this->repositorioDeCursos->findAll();
 
-        return new Response(200, ['Content-Type' => 'application/json'], json_encode($cursos));
+        $cursosEmXml = new SimpleXMLElement('<cursos/>');
+        foreach ($cursos as $curso) {
+            $cursoEmXml = $cursosEmXml->addChild('curso');
+            $cursoEmXml = $cursosEmXml->addChild('id', $curso->getId());
+            $cursoEmXml = $cursosEmXml->addChild('descricao', $curso->getDescricao());
+        }
+
+        return new Response(200, ['Content-Type' => 'application/xml'], $cursosEmXml->asXML());
     }
 }
