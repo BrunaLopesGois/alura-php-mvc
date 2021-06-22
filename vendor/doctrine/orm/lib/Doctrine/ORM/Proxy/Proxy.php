@@ -1,4 +1,5 @@
 <?php
+
 /*
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
@@ -24,8 +25,7 @@ use Doctrine\Common\Proxy\Proxy as BaseProxy;
 /**
  * Interface for proxy classes.
  *
- * @author Roman Borschel <roman@code-factory.org>
- * @since 2.0
+ * @deprecated 2.7 This interface is being removed from the ORM and won't have any replacement, proxies will no longer implement it.
  */
 interface Proxy extends BaseProxy
 {

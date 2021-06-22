@@ -5,9 +5,12 @@ namespace Doctrine\Common\Persistence;
 use BadMethodCallException;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Persistence\Mapping\ClassMetadata;
+use Doctrine\Persistence\Mapping\ClassMetadata;
+use Doctrine\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManagerAware;
 use InvalidArgumentException;
 use RuntimeException;
+
 use function lcfirst;
 use function substr;
 
@@ -28,6 +31,9 @@ use function substr;
  * 5. Only the inverse side associations get autoset on the owning side as well. Setting objects on the owning side
  *    will not set the inverse side associations.
  *
+ * @deprecated Deprecated `PersistentObject` class in 1.2. Please implement this functionality
+ *             directly in your application if you want ActiveRecord style functionality.
+ *
  * @example
  *
  *  PersistentObject::setObjectManager($em);
@@ -45,7 +51,10 @@ abstract class PersistentObject implements ObjectManagerAware
     /** @var ObjectManager|null */
     private static $objectManager = null;
 
-    /** @var ClassMetadata|null */
+    /**
+     * @var ClassMetadata<object>|null
+     * @psalm-var ClassMetadata<object>|null
+     */
     private $cm = null;
 
     /**
@@ -103,6 +112,7 @@ abstract class PersistentObject implements ObjectManagerAware
             if (! ($args[0] instanceof $targetClass) && $args[0] !== null) {
                 throw new InvalidArgumentException("Expected persistent object of type '" . $targetClass . "'");
             }
+
             $this->$field = $args[0];
             $this->completeOwningSide($field, $targetClass, $args[0]);
         } else {
@@ -131,9 +141,10 @@ abstract class PersistentObject implements ObjectManagerAware
     /**
      * If this is an inverse side association, completes the owning side.
      *
-     * @param string        $field
-     * @param ClassMetadata $targetClass
-     * @param object        $targetObject
+     * @param string $field
+     * @param string $targetClass
+     * @param object $targetObject
+     * @psalm-param class-string $targetClass
      *
      * @return void
      */
@@ -173,9 +184,11 @@ abstract class PersistentObject implements ObjectManagerAware
         if (! ($args[0] instanceof $targetClass)) {
             throw new InvalidArgumentException("Expected persistent object of type '" . $targetClass . "'");
         }
+
         if (! ($this->$field instanceof Collection)) {
             $this->$field = new ArrayCollection($this->$field ?: []);
         }
+
         $this->$field->add($args[0]);
         $this->completeOwningSide($field, $targetClass, $args[0]);
     }

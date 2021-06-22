@@ -6,16 +6,18 @@ use MongoBinData;
 use MongoCollection;
 use MongoCursorException;
 use MongoDate;
-use const E_USER_DEPRECATED;
+
 use function serialize;
 use function time;
 use function trigger_error;
 use function unserialize;
 
+use const E_USER_DEPRECATED;
+
 /**
  * MongoDB cache provider.
  *
- * @internal Do not use - will be removed in 2.0. Use MongoDBCache instead
+ * @deprecated Deprecated without replacement in doctrine/cache 1.11. This class will be dropped in 2.0
  */
 class LegacyMongoDBCache extends CacheProvider
 {
@@ -55,6 +57,7 @@ class LegacyMongoDBCache extends CacheProvider
         if ($this->isExpired($document)) {
             $this->createExpirationIndex();
             $this->doDelete($id);
+
             return false;
         }
 
@@ -75,6 +78,7 @@ class LegacyMongoDBCache extends CacheProvider
         if ($this->isExpired($document)) {
             $this->createExpirationIndex();
             $this->doDelete($id);
+
             return false;
         }
 
@@ -152,17 +156,16 @@ class LegacyMongoDBCache extends CacheProvider
     /**
      * Check if the document is expired.
      *
-     * @param array $document
+     * @param mixed[] $document
      */
-    private function isExpired(array $document) : bool
+    private function isExpired(array $document): bool
     {
         return isset($document[MongoDBCache::EXPIRATION_FIELD]) &&
             $document[MongoDBCache::EXPIRATION_FIELD] instanceof MongoDate &&
             $document[MongoDBCache::EXPIRATION_FIELD]->sec < time();
     }
 
-
-    private function createExpirationIndex() : void
+    private function createExpirationIndex(): void
     {
         if ($this->expirationIndexCreated) {
             return;

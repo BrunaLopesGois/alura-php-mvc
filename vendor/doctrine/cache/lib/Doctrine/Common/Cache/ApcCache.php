@@ -2,7 +2,6 @@
 
 namespace Doctrine\Common\Cache;
 
-use const PHP_VERSION_ID;
 use function apc_cache_info;
 use function apc_clear_cache;
 use function apc_delete;
@@ -11,11 +10,14 @@ use function apc_fetch;
 use function apc_sma_info;
 use function apc_store;
 
+use const PHP_VERSION_ID;
+
 /**
  * APC cache provider.
  *
- * @link       www.doctrine-project.org
  * @deprecated since version 1.6, use ApcuCache instead
+ *
+ * @link       www.doctrine-project.org
  */
 class ApcCache extends CacheProvider
 {
