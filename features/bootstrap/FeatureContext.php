@@ -8,8 +8,10 @@ use Behat\Gherkin\Node\TableNode;
 /**
  * Defines application features from the specific context.
  */
+// @codingStandardsIgnoreStart
 class FeatureContext implements Context
 {
+    // @codingStandardsIgnoreEnd
     /**
      * Initializes context.
      *
