@@ -1,9 +1,13 @@
 <?php
 
+use Alura\Cursos\Entity\Formacao;
+use Alura\Cursos\Exceptions\DescricaoInvalidaException;
+use Alura\Cursos\Infra\EntityManagerCreator;
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * Defines application features from the specific context.
@@ -12,6 +16,20 @@ use Behat\Gherkin\Node\TableNode;
 class FeatureContext implements Context
 {
     // @codingStandardsIgnoreEnd
+
+    /**
+     * @var EntityManagerInterface
+     */
+    private $em;
+    /**
+     * @var string
+     */
+    private $mensagemDeErro = '';
+    /**
+     * @var int
+     */
+    private $idFormacaoInserida;
+
     /**
      * Initializes context.
      *
@@ -26,17 +44,23 @@ class FeatureContext implements Context
     /**
      * @When eu tentar criar uma formação com a descrição :arg1
      */
-    public function euTentarCriarUmaFormacaoComADescricao($arg1)
+    public function euTentarCriarUmaFormacaoComADescricao(string $descricaoFormacao)
     {
-        throw new PendingException();
+        $formacao = new Formacao();
+        
+        try {
+            $formacao->setDescricao($descricaoFormacao);
+        } catch (DescricaoInvalidaException $error) {
+            $this->mensagemDeErro = $error->getMessage();
+        }
     }
 
     /**
      * @Then eu vou ver a seguinte mensagem de erro :arg1
      */
-    public function euVouVerASeguinteMensagemDeErro($arg1)
+    public function euVouVerASeguinteMensagemDeErro(string $mensagemDeErro)
     {
-        throw new PendingException();
+        assert($mensagemDeErro === $this->mensagemDeErro);
     }
 
     /**
@@ -44,15 +68,21 @@ class FeatureContext implements Context
      */
     public function queEstouConectadoAoBancoDeDados()
     {
-        throw new PendingException();
+        $this->em = (new EntityManagerCreator)->getEntityManager();
     }
 
     /**
-     * @When eu tento criar uma nova com a descrição :arg1
+     * @When eu tento salvar uma nova formação com a descrição :arg1
      */
-    public function euTentoCriarUmaNovaComADescricao($arg1)
+    public function euTentoSalvarUmaNovaFormacaoComADescricao(string $descricaoFormacao)
     {
-        throw new PendingException();
+        $formacao = new Formacao();
+        $formacao->setDescricao($descricaoFormacao);
+
+        $this->em->persist($formacao);
+        $this->em->flush();
+
+        $this->idFormacaoInserida = $formacao->getId();
     }
 
     /**
@@ -60,6 +90,15 @@ class FeatureContext implements Context
      */
     public function seEuBuscarNoBancoDevoEncontrarEssaFormacao()
     {
-        throw new PendingException();
+        /**
+         * @var \Doctrine\Persistence\ObjectRepository $repositorio
+         */
+        $repositorio = $this->em->getRepository(Formacao::class);
+        /**
+         * @var Formacao $formacao
+         */
+        $formacao = $repositorio->find($this->idFormacaoInserida);
+
+        assert($formacao instanceof Formacao);
     }
 }

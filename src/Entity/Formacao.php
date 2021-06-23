@@ -2,6 +2,8 @@
 
 namespace Alura\Cursos\Entity;
 
+use Alura\Cursos\Exceptions\DescricaoInvalidaException;
+
 /**
  * @Entity
  * @Table(name="formacoes")
@@ -36,6 +38,12 @@ class Formacao
 
     public function setDescricao(string $descricao): void
     {
+        $descricaoArray = preg_split('/\s/', $descricao);
+
+        if (!isset($descricaoArray[1])) {
+            throw new DescricaoInvalidaException();
+        }
+
         $this->descricao = $descricao;
     }
 }

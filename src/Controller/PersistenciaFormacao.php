@@ -3,6 +3,7 @@
 namespace Alura\Cursos\Controller;
 
 use Alura\Cursos\Entity\Formacao;
+use Alura\Cursos\Exceptions\DescricaoInvalidaException;
 use Alura\Cursos\Helper\FlashMessageTrait;
 use Alura\Cursos\Infra\EntityManagerCreator;
 use Doctrine\ORM\EntityManagerInterface;
@@ -30,16 +31,14 @@ class PersistenciaFormacao implements
             FILTER_SANITIZE_STRING
         );
 
-        $descricaoArray = preg_split('/\s/', $descricao);
+        $formacao = new Formacao();
 
-        if (!isset($descricaoArray[1])) {
-            $mensagem = 'Descrição precisa ter pelo menos 2 palavras';
-            $this->defineMensagem('danger', $mensagem);
+        try {
+            $formacao->setDescricao($descricao);
+        } catch (DescricaoInvalidaException $error) {
+            $this->defineMensagem('danger', $error->getMessage());
             return new Response(302, ['Location' => '/nova-formacao']);
         }
-
-        $formacao = new Formacao();
-        $formacao->setDescricao($request->getParsedBody()['descricao']);
 
         $id = filter_var(
             $request->getQueryParams()['id'],
