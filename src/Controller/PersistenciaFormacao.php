@@ -57,6 +57,6 @@ class PersistenciaFormacao implements
 
         $this->entityManager->flush();
 
-        return new Response(302, ['Location' => '/listar-cursos']);
+        return new Response(302, ['Location' => '/listar-formacoes']);
     }
 }
