@@ -15,5 +15,12 @@
         "doctrine/orm": "^2.9",
         "symfony/console": "^5.3",
         "behat/behat": "^3.8"
+    },
+    "scripts": {
+        "behat": "vendor/bin/behat",
+        "behat-generate": "vendor/bin/behat --append-snippets --dry-run",
+        "behat-generate-to": "vendor/bin/behat --append-snippets --dry-run --snippets-for=",
+        "behat-unit": "vendor/bin/behat -s unidade",
+        "behat-integration": "vendor/bin/behat -s integracao"
     }
 }

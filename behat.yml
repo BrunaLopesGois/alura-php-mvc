@@ -1,0 +1,16 @@
+default:
+  suites:
+    default:
+      contexts:
+        - FormacaoEmMemoria
+        - FormacaoNoBanco
+    unidade:
+      contexts:
+        - FormacaoEmMemoria
+      filters:
+        tags: unidade
+    integracao:
+      contexts:
+        - FormacaoNoBanco
+      filters:
+        tags: integracao

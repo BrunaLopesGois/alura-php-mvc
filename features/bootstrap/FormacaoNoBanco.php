@@ -1,7 +1,6 @@
 <?php
 
 use Alura\Cursos\Entity\Formacao;
-use Alura\Cursos\Exceptions\DescricaoInvalidaException;
 use Alura\Cursos\Infra\EntityManagerCreator;
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
@@ -13,7 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
  * Defines application features from the specific context.
  */
 // @codingStandardsIgnoreStart
-class FeatureContext implements Context
+class FormacaoNoBanco implements Context
 {
     // @codingStandardsIgnoreEnd
 
@@ -22,46 +21,9 @@ class FeatureContext implements Context
      */
     private $em;
     /**
-     * @var string
-     */
-    private $mensagemDeErro = '';
-    /**
      * @var int
      */
     private $idFormacaoInserida;
-
-    /**
-     * Initializes context.
-     *
-     * Every scenario gets its own context instance.
-     * You can also pass arbitrary arguments to the
-     * context constructor through behat.yml.
-     */
-    public function __construct()
-    {
-    }
-
-    /**
-     * @When eu tentar criar uma formação com a descrição :arg1
-     */
-    public function euTentarCriarUmaFormacaoComADescricao(string $descricaoFormacao)
-    {
-        $formacao = new Formacao();
-        
-        try {
-            $formacao->setDescricao($descricaoFormacao);
-        } catch (DescricaoInvalidaException $error) {
-            $this->mensagemDeErro = $error->getMessage();
-        }
-    }
-
-    /**
-     * @Then eu vou ver a seguinte mensagem de erro :arg1
-     */
-    public function euVouVerASeguinteMensagemDeErro(string $mensagemDeErro)
-    {
-        assert($mensagemDeErro === $this->mensagemDeErro);
-    }
 
     /**
      * @Given que estou conectado ao banco de dados
