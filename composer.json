@@ -14,13 +14,17 @@
         "doctrine/annotations": "^1.13",
         "doctrine/orm": "^2.9",
         "symfony/console": "^5.3",
-        "behat/behat": "^3.8"
+        "behat/behat": "^3.8",
+        "behat/mink": "^1.8",
+        "behat/mink-extension": "^2.3",
+        "behat/mink-goutte-driver": "^1.2"
     },
     "scripts": {
-        "behat": "vendor/bin/behat",
-        "behat-generate": "vendor/bin/behat --append-snippets --dry-run",
-        "behat-generate-to": "vendor/bin/behat --append-snippets --dry-run --snippets-for=",
-        "behat-unit": "vendor/bin/behat -s unidade",
-        "behat-integration": "vendor/bin/behat -s integracao"
+        "behat": "php vendor/bin/behat",
+        "behat-generate": "php vendor/bin/behat --append-snippets --dry-run",
+        "behat-generate-to": "php vendor/bin/behat --append-snippets --dry-run --snippets-for=",
+        "behat-unit": "php vendor/bin/behat -s unidade",
+        "behat-integration": "php vendor/bin/behat -s integracao",
+        "behat-e2e": "php vendor/bin/behat -s e2e"
     }
 }

@@ -78,7 +78,7 @@ final class CheckTypeDeclarationsPass extends AbstractRecursivePass
     /**
      * {@inheritdoc}
      */
-    protected function processValue($value, bool $isRoot = false)
+    protected function processValue($value, $isRoot = false)
     {
         if (isset($this->skippedIds[$this->currentId])) {
             return $value;
@@ -304,7 +304,7 @@ final class CheckTypeDeclarationsPass extends AbstractRecursivePass
             }
         }
 
-        throw new InvalidParameterTypeException($this->currentId, \is_object($value) ? $class : get_debug_type($value), $parameter);
+        throw new InvalidParameterTypeException($this->currentId, \is_object($value) ? $class : \gettype($value), $parameter);
     }
 
     private function getExpressionLanguage(): ExpressionLanguage

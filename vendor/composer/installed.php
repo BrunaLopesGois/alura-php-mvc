@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '9bed35f62cf281131262937aa11dace7a014ff64',
+    'reference' => '372f9cae2085189d9e2bfc0a3744b7c537546f61',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '9bed35f62cf281131262937aa11dace7a014ff64',
+      'reference' => '372f9cae2085189d9e2bfc0a3744b7c537546f61',
     ),
     'behat/behat' => 
     array (
@@ -37,6 +37,42 @@
       array (
       ),
       'reference' => '2391482cd003dfdc36b679b27e9f5326bd656acd',
+    ),
+    'behat/mink' => 
+    array (
+      'pretty_version' => 'v1.8.1',
+      'version' => '1.8.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '07c6a9fe3fa98c2de074b25d9ed26c22904e3887',
+    ),
+    'behat/mink-browserkit-driver' => 
+    array (
+      'pretty_version' => 'v1.3.4',
+      'version' => '1.3.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'e3b90840022ebcd544c7b394a3c9597ae242cbee',
+    ),
+    'behat/mink-extension' => 
+    array (
+      'pretty_version' => '2.3.1',
+      'version' => '2.3.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '80f7849ba53867181b7e412df9210e12fba50177',
+    ),
+    'behat/mink-goutte-driver' => 
+    array (
+      'pretty_version' => 'v1.2.1',
+      'version' => '1.2.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '8b9ad6d2d95bc70b840d15323365f52fcdaea6ca',
     ),
     'behat/transliterator' => 
     array (
@@ -163,6 +199,42 @@
       array (
       ),
       'reference' => 'd138f3ab5f761055cab1054070377cfd3222e368',
+    ),
+    'fabpot/goutte' => 
+    array (
+      'pretty_version' => 'v3.3.1',
+      'version' => '3.3.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '80a23b64f44d54dd571d114c473d9d7e9ed84ca5',
+    ),
+    'guzzlehttp/guzzle' => 
+    array (
+      'pretty_version' => '6.5.5',
+      'version' => '6.5.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '9d4290de1cfd701f38099ef7e183b64b4b7b0c5e',
+    ),
+    'guzzlehttp/promises' => 
+    array (
+      'pretty_version' => '1.4.1',
+      'version' => '1.4.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '8e7d04f1f6450fef59366c399cfad4b9383aa30d',
+    ),
+    'guzzlehttp/psr7' => 
+    array (
+      'pretty_version' => '1.8.2',
+      'version' => '1.8.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'dc960a912984efb74d0a90222870c72c87f10c91',
     ),
     'nyholm/psr7' => 
     array (
@@ -324,14 +396,32 @@
         0 => '1.0',
       ),
     ),
-    'symfony/config' => 
+    'ralouphie/getallheaders' => 
     array (
-      'pretty_version' => 'v5.3.2',
-      'version' => '5.3.2.0',
+      'pretty_version' => '3.0.3',
+      'version' => '3.0.3.0',
       'aliases' => 
       array (
       ),
-      'reference' => '9c307728cfacbd50914f0db28aee1e0ecd82b99f',
+      'reference' => '120b605dfeb996808c31b6477290a714d356e822',
+    ),
+    'symfony/browser-kit' => 
+    array (
+      'pretty_version' => 'v4.4.25',
+      'version' => '4.4.25.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '729b1f0eca3ef18ea4e1a29b166145aff75d8fa1',
+    ),
+    'symfony/config' => 
+    array (
+      'pretty_version' => 'v4.4.25',
+      'version' => '4.4.25.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '2803882bb10353d277d4539635dd688a053d571c',
     ),
     'symfony/console' => 
     array (
@@ -342,14 +432,23 @@
       ),
       'reference' => '649730483885ff2ca99ca0560ef0e5f6b03f2ac1',
     ),
-    'symfony/dependency-injection' => 
+    'symfony/css-selector' => 
     array (
-      'pretty_version' => 'v5.3.2',
-      'version' => '5.3.2.0',
+      'pretty_version' => 'v5.3.0',
+      'version' => '5.3.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'ddbff73bc4fa3d5b415431d486770ab0e72f6516',
+      'reference' => 'fcd0b29a7a0b1bb5bfbedc6231583d77fea04814',
+    ),
+    'symfony/dependency-injection' => 
+    array (
+      'pretty_version' => 'v4.4.25',
+      'version' => '4.4.25.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '2ed2a0a6c960bf4e2e862ec77b2f2c558b83c64d',
     ),
     'symfony/deprecation-contracts' => 
     array (
@@ -359,6 +458,15 @@
       array (
       ),
       'reference' => '5f38c8804a9e97d23e0c8d63341088cd8a22d627',
+    ),
+    'symfony/dom-crawler' => 
+    array (
+      'pretty_version' => 'v4.4.25',
+      'version' => '4.4.25.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '41d15bb6d6b95d2be763c514bb2494215d9c5eef',
     ),
     'symfony/event-dispatcher' => 
     array (
@@ -412,6 +520,15 @@
       ),
       'reference' => '24b72c6baa32c746a4d0840147c9715e42bb68ab',
     ),
+    'symfony/polyfill-intl-idn' => 
+    array (
+      'pretty_version' => 'v1.23.0',
+      'version' => '1.23.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '65bd267525e82759e7d8c4e8ceea44f398838e65',
+    ),
     'symfony/polyfill-intl-normalizer' => 
     array (
       'pretty_version' => 'v1.23.0',
@@ -429,6 +546,15 @@
       array (
       ),
       'reference' => '2df51500adbaebdc4c38dea4c89a2e131c45c8a1',
+    ),
+    'symfony/polyfill-php72' => 
+    array (
+      'pretty_version' => 'v1.23.0',
+      'version' => '1.23.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '9a142215a36a3888e30d0a9eeea9766764e96976',
     ),
     'symfony/polyfill-php73' => 
     array (
@@ -484,12 +610,12 @@
     ),
     'symfony/translation' => 
     array (
-      'pretty_version' => 'v5.3.2',
-      'version' => '5.3.2.0',
+      'pretty_version' => 'v4.4.25',
+      'version' => '4.4.25.0',
       'aliases' => 
       array (
       ),
-      'reference' => '7e2603bcc598e14804c4d2359d8dc4ee3c40391b',
+      'reference' => 'dfe132c5c6d89f90ce7f961742cc532e9ca16dd4',
     ),
     'symfony/translation-contracts' => 
     array (
@@ -504,7 +630,7 @@
     array (
       'provided' => 
       array (
-        0 => '2.3',
+        0 => '1.0|2.0',
       ),
     ),
     'symfony/yaml' => 
