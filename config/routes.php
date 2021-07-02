@@ -4,6 +4,7 @@ use Alura\Cursos\Controller\CursosEmJson;
 use Alura\Cursos\Controller\CursosEmXml;
 use Alura\Cursos\Controller\Deslogar;
 use Alura\Cursos\Controller\Exclusao;
+use Alura\Cursos\Controller\ExclusaoDeFormacao;
 use Alura\Cursos\Controller\FormularioEdicao;
 use Alura\Cursos\Controller\FormularioFormacao;
 use Alura\Cursos\Controller\FormularioInsercao;
@@ -28,4 +29,5 @@ return [
     '/nova-formacao' => FormularioFormacao::class,
     '/salvar-formacao' => PersistenciaFormacao::class,
     '/listar-formacoes' => ListarFormacoes::class,
+    '/excluir-formacao' => ExclusaoDeFormacao::class,
 ];

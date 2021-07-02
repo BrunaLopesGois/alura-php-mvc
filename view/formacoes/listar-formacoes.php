@@ -7,7 +7,7 @@
         <li class="list-group-item d-flex justify-content-between">
             <?= $formacao->getDescricao(); ?>
             <span>
-                <a href="" class="btn btn-danger btn-sm">
+                <a href="/excluir-formacao?id=<?= $formacao->getId(); ?>" class="btn btn-danger btn-sm">
                     Excluir
                 </a>
             </span>

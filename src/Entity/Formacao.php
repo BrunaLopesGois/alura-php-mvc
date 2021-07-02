@@ -8,7 +8,8 @@ use Alura\Cursos\Exceptions\DescricaoInvalidaException;
  * @Entity
  * @Table(name="formacoes")
  */
-class Formacao
+class Formacao implements
+    \JsonSerializable
 {
     /**
      * @Id
@@ -45,5 +46,13 @@ class Formacao
         }
 
         $this->descricao = $descricao;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->id,
+            'descricao' => $this->descricao
+        ];
     }
 }

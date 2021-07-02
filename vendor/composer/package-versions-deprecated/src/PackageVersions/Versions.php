@@ -95,7 +95,7 @@ final class Versions
   'symfony/translation' => 'v4.4.25@dfe132c5c6d89f90ce7f961742cc532e9ca16dd4',
   'symfony/translation-contracts' => 'v2.4.0@95c812666f3e91db75385749fe219c5e494c7f95',
   'symfony/yaml' => 'v5.3.2@71719ab2409401711d619765aa255f9d352a59b2',
-  '__root__' => 'dev-master@372f9cae2085189d9e2bfc0a3744b7c537546f61',
+  '__root__' => 'dev-master@92fec5466d6ccb0df01b16d625ee7501169c086e',
 );
 
     private function __construct()
