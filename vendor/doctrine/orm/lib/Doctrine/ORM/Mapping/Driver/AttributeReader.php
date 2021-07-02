@@ -11,8 +11,7 @@ use ReflectionClass;
 use ReflectionMethod;
 use ReflectionProperty;
 
-use function assert;
-use function is_string;
+use function count;
 use function is_subclass_of;
 
 /**
@@ -23,75 +22,63 @@ final class AttributeReader
     /** @var array<string,bool> */
     private array $isRepeatableAttribute = [];
 
-    /** @return array<Annotation|RepeatableAttributeCollection> */
+    /** @return array<object> */
     public function getClassAnnotations(ReflectionClass $class): array
     {
         return $this->convertToAttributeInstances($class->getAttributes());
     }
 
-    /** @return Annotation|RepeatableAttributeCollection|null */
+    /** @return array<object>|object|null */
     public function getClassAnnotation(ReflectionClass $class, $annotationName)
     {
-        return $this->getClassAnnotations($class)[$annotationName]
-            ?? ($this->isRepeatable($annotationName) ? new RepeatableAttributeCollection() : null);
+        return $this->getClassAnnotations($class)[$annotationName] ?? ($this->isRepeatable($annotationName) ? [] : null);
     }
 
-    /** @return array<Annotation|RepeatableAttributeCollection> */
+    /** @return array<object> */
     public function getMethodAnnotations(ReflectionMethod $method): array
     {
         return $this->convertToAttributeInstances($method->getAttributes());
     }
 
-    /** @return Annotation|RepeatableAttributeCollection|null */
+    /** @return array<object>|object|null */
     public function getMethodAnnotation(ReflectionMethod $method, $annotationName)
     {
-        return $this->getMethodAnnotations($method)[$annotationName]
-            ?? ($this->isRepeatable($annotationName) ? new RepeatableAttributeCollection() : null);
+        return $this->getMethodAnnotations($method)[$annotationName] ?? ($this->isRepeatable($annotationName) ? [] : null);
     }
 
-    /** @return array<Annotation|RepeatableAttributeCollection> */
+    /** @return array<object> */
     public function getPropertyAnnotations(ReflectionProperty $property): array
     {
         return $this->convertToAttributeInstances($property->getAttributes());
     }
 
-    /** @return Annotation|RepeatableAttributeCollection|null */
+    /** @return array<object>|object|null */
     public function getPropertyAnnotation(ReflectionProperty $property, $annotationName)
     {
-        return $this->getPropertyAnnotations($property)[$annotationName]
-            ?? ($this->isRepeatable($annotationName) ? new RepeatableAttributeCollection() : null);
+        return $this->getPropertyAnnotations($property)[$annotationName] ?? ($this->isRepeatable($annotationName) ? [] : null);
     }
 
     /**
-     * @param array<ReflectionAttribute> $attributes
+     * @param array<object> $attributes
      *
-     * @return array<Annotation|RepeatableAttributeCollection>
+     * @return array<Annotation>
      */
     private function convertToAttributeInstances(array $attributes): array
     {
         $instances = [];
 
         foreach ($attributes as $attribute) {
-            $attributeName = $attribute->getName();
-            assert(is_string($attributeName));
             // Make sure we only get Doctrine Annotations
-            if (! is_subclass_of($attributeName, Annotation::class)) {
+            if (! is_subclass_of($attribute->getName(), Annotation::class)) {
                 continue;
             }
 
             $instance = $attribute->newInstance();
-            assert($instance instanceof Annotation);
 
-            if ($this->isRepeatable($attributeName)) {
-                if (! isset($instances[$attributeName])) {
-                    $instances[$attributeName] = new RepeatableAttributeCollection();
-                }
-
-                $collection = $instances[$attributeName];
-                assert($collection instanceof RepeatableAttributeCollection);
-                $collection[] = $instance;
+            if ($this->isRepeatable($attribute->getName())) {
+                $instances[$attribute->getName()][] = $instance;
             } else {
-                $instances[$attributeName] = $instance;
+                $instances[$attribute->getName()] = $instance;
             }
         }
 

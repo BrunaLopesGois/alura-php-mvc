@@ -57,8 +57,8 @@ final class Column implements Annotation
     /** @var bool */
     public $unique = false;
 
-    /** @var bool */
-    public $nullable = false;
+    /** @var bool|null */
+    public $nullable;
 
     /** @var array<string,mixed> */
     public $options = [];
@@ -76,7 +76,7 @@ final class Column implements Annotation
         ?int $precision = null,
         ?int $scale = null,
         bool $unique = false,
-        bool $nullable = false,
+        ?bool $nullable = null,
         array $options = [],
         ?string $columnDefinition = null
     ) {

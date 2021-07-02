@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '372f9cae2085189d9e2bfc0a3744b7c537546f61',
+    'reference' => '92fec5466d6ccb0df01b16d625ee7501169c086e',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '372f9cae2085189d9e2bfc0a3744b7c537546f61',
+      'reference' => '92fec5466d6ccb0df01b16d625ee7501169c086e',
     ),
     'behat/behat' => 
     array (
@@ -103,12 +103,12 @@
     ),
     'doctrine/cache' => 
     array (
-      'pretty_version' => '1.11.3',
-      'version' => '1.11.3.0',
+      'pretty_version' => '2.0.3',
+      'version' => '2.0.3.0',
       'aliases' => 
       array (
       ),
-      'reference' => '3bb5588cec00a0268829cc4a518490df6741af9d',
+      'reference' => 'c9622c6820d3ede1e2315a6a377ea1076e421d88',
     ),
     'doctrine/collections' => 
     array (
@@ -130,12 +130,12 @@
     ),
     'doctrine/dbal' => 
     array (
-      'pretty_version' => '2.13.1',
-      'version' => '2.13.1.0',
+      'pretty_version' => '2.13.2',
+      'version' => '2.13.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'c800380457948e65bbd30ba92cc17cda108bf8c9',
+      'reference' => '8dd39d2ead4409ce652fd4f02621060f009ea5e4',
     ),
     'doctrine/deprecations' => 
     array (
@@ -184,12 +184,12 @@
     ),
     'doctrine/orm' => 
     array (
-      'pretty_version' => '2.9.3',
-      'version' => '2.9.3.0',
+      'pretty_version' => '2.9.0',
+      'version' => '2.9.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '82e77cf5089a1303733f75f0f0ed01be3ab9ec22',
+      'reference' => '99d67cb77d3626c52f4d5feb5caed58948ea5577',
     ),
     'doctrine/persistence' => 
     array (
@@ -315,6 +315,13 @@
       ),
       'reference' => 'd11b50ad223250cf17b86e38383413f5a6764bf8',
     ),
+    'psr/cache-implementation' => 
+    array (
+      'provided' => 
+      array (
+        0 => '1.0|2.0',
+      ),
+    ),
     'psr/container' => 
     array (
       'pretty_version' => '1.1.1',
@@ -389,7 +396,23 @@
       ),
       'reference' => 'aff2f80e33b7f026ec96bb42f63242dc50ffcae7',
     ),
+    'psr/log' => 
+    array (
+      'pretty_version' => '1.1.4',
+      'version' => '1.1.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'd49695b909c3b7628b6289db5479a1c204601f11',
+    ),
     'psr/log-implementation' => 
+    array (
+      'provided' => 
+      array (
+        0 => '1.0',
+      ),
+    ),
+    'psr/simple-cache-implementation' => 
     array (
       'provided' => 
       array (
@@ -413,6 +436,31 @@
       array (
       ),
       'reference' => '729b1f0eca3ef18ea4e1a29b166145aff75d8fa1',
+    ),
+    'symfony/cache' => 
+    array (
+      'pretty_version' => 'v5.3.3',
+      'version' => '5.3.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '82962a497f090e95e3b357c21bf6f54991c9b1a5',
+    ),
+    'symfony/cache-contracts' => 
+    array (
+      'pretty_version' => 'v2.4.0',
+      'version' => '2.4.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'c0446463729b89dd4fa62e9aeecc80287323615d',
+    ),
+    'symfony/cache-implementation' => 
+    array (
+      'provided' => 
+      array (
+        0 => '1.0|2.0',
+      ),
     ),
     'symfony/config' => 
     array (
@@ -601,12 +649,12 @@
     ),
     'symfony/string' => 
     array (
-      'pretty_version' => 'v5.3.2',
-      'version' => '5.3.2.0',
+      'pretty_version' => 'v5.3.3',
+      'version' => '5.3.3.0',
       'aliases' => 
       array (
       ),
-      'reference' => '0732e97e41c0a590f77e231afc16a327375d50b0',
+      'reference' => 'bd53358e3eccec6a670b5f33ab680d8dbe1d4ae1',
     ),
     'symfony/translation' => 
     array (
@@ -632,6 +680,15 @@
       array (
         0 => '1.0|2.0',
       ),
+    ),
+    'symfony/var-exporter' => 
+    array (
+      'pretty_version' => 'v5.3.3',
+      'version' => '5.3.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '903c2c0babd6267de5bcb2995e8fc1efb5f01f1f',
     ),
     'symfony/yaml' => 
     array (

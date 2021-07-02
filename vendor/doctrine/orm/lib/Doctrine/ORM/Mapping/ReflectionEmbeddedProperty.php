@@ -22,7 +22,6 @@ namespace Doctrine\ORM\Mapping;
 
 use Doctrine\Instantiator\Instantiator;
 use ReflectionProperty;
-use ReturnTypeWillChange;
 
 /**
  * Acts as a proxy to a nested Property structure, making it look like
@@ -62,7 +61,6 @@ class ReflectionEmbeddedProperty extends ReflectionProperty
     /**
      * {@inheritDoc}
      */
-    #[ReturnTypeWillChange]
     public function getValue($object = null)
     {
         $embeddedObject = $this->parentProperty->getValue($object);
@@ -77,7 +75,6 @@ class ReflectionEmbeddedProperty extends ReflectionProperty
     /**
      * {@inheritDoc}
      */
-    #[ReturnTypeWillChange]
     public function setValue($object, $value = null)
     {
         $embeddedObject = $this->parentProperty->getValue($object);

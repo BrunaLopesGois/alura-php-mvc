@@ -78,6 +78,7 @@ use Doctrine\ORM\Query\AST\UpdateStatement;
 use Doctrine\ORM\Query\AST\WhenClause;
 use Doctrine\ORM\Query\AST\WhereClause;
 use ReflectionClass;
+use Webmozart\Assert\Assert;
 
 use function array_intersect;
 use function array_search;
@@ -3542,7 +3543,7 @@ class Parser
         $functionName  = strtolower($this->lexer->lookahead['value']);
         $functionClass = $this->em->getConfiguration()->getCustomNumericFunction($functionName);
 
-        assert($functionClass !== null);
+        Assert::notNull($functionClass);
 
         $function = is_string($functionClass)
             ? new $functionClass($functionName)
@@ -3583,7 +3584,7 @@ class Parser
         $functionName  = $this->lexer->lookahead['value'];
         $functionClass = $this->em->getConfiguration()->getCustomDatetimeFunction($functionName);
 
-        assert($functionClass !== null);
+        Assert::notNull($functionClass);
 
         $function = is_string($functionClass)
             ? new $functionClass($functionName)
@@ -3625,7 +3626,7 @@ class Parser
         $functionName  = $this->lexer->lookahead['value'];
         $functionClass = $this->em->getConfiguration()->getCustomStringFunction($functionName);
 
-        assert($functionClass !== null);
+        Assert::notNull($functionClass);
 
         $function = is_string($functionClass)
             ? new $functionClass($functionName)

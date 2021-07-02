@@ -22,7 +22,6 @@ namespace Doctrine\ORM\Mapping;
 
 use Attribute;
 use Doctrine\Common\Annotations\Annotation\NamedArgumentConstructor;
-use Doctrine\Deprecations\Deprecation;
 
 /**
  * @Annotation
@@ -32,22 +31,17 @@ use Doctrine\Deprecations\Deprecation;
 #[Attribute(Attribute::TARGET_PROPERTY)]
 final class Embedded implements Annotation
 {
-    /** @var string|null */
+    /**
+     * @Required
+     * @var string
+     */
     public $class;
 
     /** @var string|bool|null */
     public $columnPrefix;
 
-    public function __construct(?string $class = null, $columnPrefix = null)
+    public function __construct(string $class, $columnPrefix = null)
     {
-        if ($class === null) {
-            Deprecation::trigger(
-                'doctrine/orm',
-                'https://github.com/doctrine/orm/issues/8753',
-                'Passing no class is deprecated.'
-            );
-        }
-
         $this->class        = $class;
         $this->columnPrefix = $columnPrefix;
     }

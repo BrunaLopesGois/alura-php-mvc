@@ -630,12 +630,8 @@ class UnitOfWork implements PropertyChangedListener
      *
      * @param ClassMetadata $class  The class descriptor of the entity.
      * @param object        $entity The entity for which to compute the changes.
-     * @psalm-param ClassMetadata<T> $class
-     * @psalm-param T $entity
      *
      * @return void
-     *
-     * @template T of object
      *
      * @ignore
      */
@@ -963,10 +959,6 @@ class UnitOfWork implements PropertyChangedListener
 
     /**
      * @param object $entity
-     * @psalm-param ClassMetadata<T> $class
-     * @psalm-param T $entity
-     *
-     * @template T of object
      */
     private function persistNew(ClassMetadata $class, $entity): void
     {
@@ -1025,14 +1017,11 @@ class UnitOfWork implements PropertyChangedListener
      *
      * @param ClassMetadata $class  The class descriptor of the entity.
      * @param object        $entity The entity for which to (re)calculate the change set.
-     * @psalm-param ClassMetadata<T> $class
-     * @psalm-param T $entity
      *
      * @return void
      *
      * @throws ORMInvalidArgumentException If the passed entity is not MANAGED.
      *
-     * @template T of object
      * @ignore
      */
     public function recomputeSingleEntityChangeSet(ClassMetadata $class, $entity)
@@ -1155,10 +1144,6 @@ class UnitOfWork implements PropertyChangedListener
 
     /**
      * @param object $entity
-     * @psalm-param ClassMetadata<T> $class
-     * @psalm-param T $entity
-     *
-     * @template T of object
      */
     private function addToEntityIdentifiersAndEntityMap(
         ClassMetadata $class,
@@ -2035,13 +2020,8 @@ class UnitOfWork implements PropertyChangedListener
     /**
      * @param object $entity
      * @param object $managedCopy
-     * @psalm-param ClassMetadata<T> $class
-     * @psalm-param T $entity
-     * @psalm-param T $managedCopy
      *
      * @throws OptimisticLockException
-     *
-     * @template T of object
      */
     private function ensureVersionMatch(
         ClassMetadata $class,
